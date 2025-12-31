@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTIMATE BRAINROT EXPERIENCE | SKIBIDI OHIO RIZZ</title>
+    <title>ULTIMATE BRAINROT EXPERIENCE | SKIBIDI OHIO RIZZ SIGMA</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Russo+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Russo+One&family=Permanent+Marker&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 100 100"><text y=".9em" font-size="90">💀</text></svg>'), auto;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --neon-pink: #ff00ff;
@@ -23,42 +18,160 @@
             --neon-orange: #ff6600;
             --neon-purple: #bf00ff;
             --ohio-red: #ff0000;
+            --sigma-blue: #0066ff;
+        }
+
+        /* ENTRY OVERLAY - Quick click to unleash chaos */
+        .entry-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at center, #1a0033, #000);
+            z-index: 9999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .entry-overlay.hidden { display: none; }
+
+        .entry-overlay::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, var(--neon-pink), var(--neon-cyan), var(--neon-green), var(--neon-yellow), var(--neon-orange), var(--neon-purple), var(--neon-pink));
+            animation: spinBg 2s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes spinBg { to { transform: rotate(360deg); } }
+
+        .entry-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(2rem, 8vw, 5rem);
+            color: #fff;
+            text-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-cyan), 0 0 90px var(--neon-purple), 0 0 120px var(--neon-green);
+            animation: megaPulse 0.2s ease-in-out infinite alternate, textGlitch 0.1s infinite;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .entry-warning {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: var(--ohio-red);
+            text-shadow: 0 0 20px var(--ohio-red);
+            animation: blink 0.3s infinite;
+            margin: 20px 0;
+            z-index: 1;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .entry-button {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(1rem, 3vw, 2rem);
+            padding: 30px 60px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan), var(--neon-green), var(--neon-yellow));
+            background-size: 500% 100%;
+            animation: rainbowSlide 1s linear infinite;
+            border: 6px solid #fff;
+            border-radius: 0;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0 0 50px var(--neon-pink), 0 0 100px var(--neon-cyan), inset 0 0 30px rgba(255,255,255,0.5);
+            transform: skew(-5deg);
+            transition: transform 0.1s;
+            z-index: 1;
+        }
+
+        .entry-button:hover {
+            transform: skew(5deg) scale(1.2);
+            animation: rainbowSlide 0.2s linear infinite, shake 0.1s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: skew(5deg) scale(1.2) translate(0); }
+            25% { transform: skew(5deg) scale(1.2) translate(-5px, 5px); }
+            75% { transform: skew(5deg) scale(1.2) translate(5px, -5px); }
+        }
+
+        @keyframes megaPulse {
+            from { transform: scale(1) rotate(-1deg); }
+            to { transform: scale(1.1) rotate(1deg); }
         }
 
         body {
-            background: linear-gradient(45deg, #0a0a0a, #1a0a2e, #0a1a2e, #2e0a1a);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite, screenShake 0.5s infinite;
+            background: #000;
             min-height: 100vh;
             overflow-x: hidden;
             font-family: 'Bangers', cursive;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 100 100"><text y=".9em" font-size="90">💀</text></svg>'), auto;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        body.chaos-mode {
+            animation: bgChaos 0.5s infinite, screenShake 0.1s infinite;
+        }
+
+        @keyframes bgChaos {
+            0% { background: linear-gradient(45deg, #0a0a2a, #2a0a2a); }
+            25% { background: linear-gradient(135deg, #2a0a0a, #0a2a2a); }
+            50% { background: linear-gradient(225deg, #0a2a0a, #2a2a0a); }
+            75% { background: linear-gradient(315deg, #2a0a2a, #0a0a2a); }
+            100% { background: linear-gradient(45deg, #0a0a2a, #2a0a2a); }
         }
 
         @keyframes screenShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-2px) rotate(0.5deg); }
-            75% { transform: translateX(2px) rotate(-0.5deg); }
+            0%, 100% { transform: translate(0) rotate(0); }
+            10% { transform: translate(-3px, 3px) rotate(0.5deg); }
+            20% { transform: translate(3px, -3px) rotate(-0.5deg); }
+            30% { transform: translate(-3px, -3px) rotate(0.5deg); }
+            40% { transform: translate(3px, 3px) rotate(-0.5deg); }
+            50% { transform: translate(-2px, 2px) rotate(0.3deg); }
+            60% { transform: translate(2px, -2px) rotate(-0.3deg); }
+            70% { transform: translate(-2px, -2px) rotate(0.3deg); }
+            80% { transform: translate(2px, 2px) rotate(-0.3deg); }
+            90% { transform: translate(-1px, 1px) rotate(0.1deg); }
         }
 
-        /* EPIC HEADER */
+        /* SCANLINES */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.1) 0px,
+                rgba(0,0,0,0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 999998;
+            animation: scanlineMove 0.1s linear infinite;
+        }
+
+        @keyframes scanlineMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(4px); }
+        }
+
+        /* HEADER - TRIPLE LAYER */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 9999;
-            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-green), var(--neon-yellow), var(--neon-pink));
-            background-size: 500% 100%;
-            animation: rainbowSlide 2s linear infinite;
-            padding: 10px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-green), var(--neon-yellow), var(--neon-orange), var(--neon-purple), var(--neon-pink));
+            background-size: 700% 100%;
+            animation: rainbowSlide 1s linear infinite;
+            padding: 8px;
             text-align: center;
-            border-bottom: 5px solid var(--neon-purple);
-            box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-cyan);
+            border-bottom: 5px solid #fff;
+            box-shadow: 0 0 50px var(--neon-pink), 0 0 100px var(--neon-cyan);
         }
 
         @keyframes rainbowSlide {
@@ -68,154 +181,331 @@
 
         .header h1 {
             font-family: 'Press Start 2P', monospace;
-            font-size: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(0.5rem, 2.5vw, 1.3rem);
             color: #000;
-            text-shadow: 3px 3px 0 var(--neon-cyan), -3px -3px 0 var(--neon-pink);
-            animation: textGlitch 0.3s infinite;
+            text-shadow: 2px 2px 0 var(--neon-cyan), -2px -2px 0 var(--neon-pink), 0 0 10px #fff;
+            animation: textGlitch 0.15s infinite;
         }
 
         @keyframes textGlitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(2px, -2px); }
-            60% { transform: translate(-1px, -1px); }
-            80% { transform: translate(1px, 1px); }
+            0%, 100% { transform: translate(0) skew(0); filter: hue-rotate(0deg); }
+            20% { transform: translate(-3px, 2px) skew(2deg); filter: hue-rotate(90deg); }
+            40% { transform: translate(3px, -2px) skew(-2deg); filter: hue-rotate(180deg); }
+            60% { transform: translate(-2px, -2px) skew(1deg); filter: hue-rotate(270deg); }
+            80% { transform: translate(2px, 2px) skew(-1deg); filter: hue-rotate(360deg); }
         }
 
-        /* STEAL A BRAINROT COUNTER */
-        .brainrot-counter {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 9998;
-            background: linear-gradient(135deg, #ff0080, #7928ca);
-            padding: 20px;
-            border-radius: 20px;
-            border: 4px solid var(--neon-yellow);
-            box-shadow: 0 0 30px var(--neon-pink), inset 0 0 20px rgba(255,255,255,0.2);
-            animation: floatBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes floatBounce {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .brainrot-counter h2 {
-            font-family: 'Russo One', sans-serif;
-            color: var(--neon-yellow);
-            font-size: 1rem;
-            text-shadow: 2px 2px 0 #000;
-        }
-
-        .brainrot-counter .count {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 2rem;
-            color: #fff;
-            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-pink);
-        }
-
-        /* MARQUEE MADNESS */
+        /* MULTIPLE MARQUEES */
         .marquee-container {
             position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             z-index: 9997;
             overflow: hidden;
-            background: rgba(0,0,0,0.8);
-            border-top: 3px solid var(--neon-green);
-            border-bottom: 3px solid var(--neon-green);
+            background: rgba(0,0,0,0.95);
+            border: 3px solid var(--neon-green);
         }
+
+        .marquee-top { top: 50px; }
+        .marquee-bottom { bottom: 0; }
 
         .marquee {
             display: flex;
-            animation: marqueeScroll 10s linear infinite;
             white-space: nowrap;
         }
 
-        @keyframes marqueeScroll {
+        .marquee-left { animation: marqueeLeft 8s linear infinite; }
+        .marquee-right { animation: marqueeRight 6s linear infinite; }
+
+        @keyframes marqueeLeft {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marqueeRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
 
         .marquee span {
             font-family: 'Bangers', cursive;
             font-size: 1.5rem;
-            padding: 5px 30px;
-            color: var(--neon-yellow);
-            text-shadow: 0 0 10px var(--neon-yellow);
+            padding: 8px 40px;
+            animation: colorCycle 0.5s infinite;
         }
 
-        .marquee span:nth-child(odd) {
-            color: var(--neon-pink);
-            text-shadow: 0 0 10px var(--neon-pink);
+        .marquee span:nth-child(odd) { animation-delay: 0.25s; }
+
+        @keyframes colorCycle {
+            0% { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
+            25% { color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan); }
+            50% { color: var(--neon-green); text-shadow: 0 0 20px var(--neon-green); }
+            75% { color: var(--neon-yellow); text-shadow: 0 0 20px var(--neon-yellow); }
+            100% { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
         }
 
-        /* MAIN CHAOS CONTAINER */
-        .chaos-container {
-            padding-top: 120px;
-            min-height: 200vh;
-            position: relative;
+        /* CHAOS STATS PANEL */
+        .stats-panel {
+            position: fixed;
+            top: 100px; right: 10px;
+            z-index: 9998;
+            background: linear-gradient(135deg, rgba(255,0,128,0.9), rgba(128,0,255,0.9));
+            padding: 15px;
+            border-radius: 0;
+            border: 4px solid var(--neon-yellow);
+            box-shadow: 0 0 40px var(--neon-pink), inset 0 0 20px rgba(0,0,0,0.5);
+            animation: floatCrazy 1s ease-in-out infinite, borderFlash 0.2s infinite;
+            transform: rotate(3deg);
         }
 
-        /* FLOATING WINDOWS */
-        .floating-window {
-            position: absolute;
-            background: linear-gradient(145deg, rgba(20,20,40,0.95), rgba(40,20,60,0.95));
-            border: 3px solid;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(255,0,255,0.5);
-            animation: windowFloat 4s ease-in-out infinite;
-            transition: transform 0.3s, box-shadow 0.3s;
+        @keyframes floatCrazy {
+            0%, 100% { transform: translateY(0) rotate(3deg) scale(1); }
+            25% { transform: translateY(-15px) rotate(-3deg) scale(1.05); }
+            50% { transform: translateY(-5px) rotate(5deg) scale(0.95); }
+            75% { transform: translateY(-20px) rotate(-5deg) scale(1.02); }
         }
 
-        .floating-window:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 0 50px var(--neon-cyan), 0 0 100px var(--neon-pink);
+        @keyframes borderFlash {
+            0%, 100% { border-color: var(--neon-yellow); }
+            33% { border-color: var(--neon-cyan); }
+            66% { border-color: var(--neon-pink); }
+        }
+
+        .stats-panel h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 10px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            font-family: 'Russo One', sans-serif;
+            color: var(--neon-green);
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1rem;
+            color: #fff;
+            text-shadow: 0 0 10px currentColor;
+            animation: numberPulse 0.3s infinite;
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* STEAL A BRAINROT - BIGGER AND CRAZIER */
+        .steal-section {
+            position: fixed;
+            bottom: 60px; left: 10px;
+            z-index: 9998;
+            background: linear-gradient(135deg, #0a0a2a, #1a0a3a);
+            padding: 15px;
+            border-radius: 0;
+            border: 4px solid var(--neon-green);
+            box-shadow: 0 0 50px var(--neon-green), inset 0 0 30px rgba(57,255,20,0.2);
+            transform: rotate(-2deg);
+            animation: wobble 0.5s ease-in-out infinite;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .steal-section h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            color: var(--neon-green);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--neon-green);
+            animation: textFlash 0.2s infinite;
+        }
+
+        @keyframes textFlash {
+            0%, 100% { opacity: 1; color: var(--neon-green); }
+            50% { opacity: 0.8; color: var(--neon-cyan); }
+        }
+
+        .brainrot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .brainrot-item {
+            font-size: 2rem;
+            padding: 8px;
+            background: linear-gradient(145deg, #2a2a5a, #1a1a4a);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.1s;
+            animation: itemCrazy 0.5s ease-in-out infinite;
+            text-align: center;
+        }
+
+        .brainrot-item:nth-child(1) { animation-delay: 0s; }
+        .brainrot-item:nth-child(2) { animation-delay: 0.05s; }
+        .brainrot-item:nth-child(3) { animation-delay: 0.1s; }
+        .brainrot-item:nth-child(4) { animation-delay: 0.15s; }
+        .brainrot-item:nth-child(5) { animation-delay: 0.2s; }
+        .brainrot-item:nth-child(6) { animation-delay: 0.25s; }
+        .brainrot-item:nth-child(7) { animation-delay: 0.3s; }
+        .brainrot-item:nth-child(8) { animation-delay: 0.35s; }
+        .brainrot-item:nth-child(9) { animation-delay: 0.4s; }
+        .brainrot-item:nth-child(10) { animation-delay: 0.45s; }
+        .brainrot-item:nth-child(11) { animation-delay: 0.5s; }
+        .brainrot-item:nth-child(12) { animation-delay: 0.55s; }
+
+        @keyframes itemCrazy {
+            0%, 100% { transform: scale(1) rotate(0); }
+            25% { transform: scale(1.15) rotate(5deg); }
+            50% { transform: scale(0.9) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(3deg); }
+        }
+
+        .brainrot-item:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-cyan);
+            transform: scale(1.4) rotate(15deg) !important;
             z-index: 100;
         }
 
-        @keyframes windowFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .brainrot-item.stolen {
+            filter: grayscale(100%) blur(2px);
+            opacity: 0.2;
+            pointer-events: none;
+            animation: none;
+        }
+
+        /* INVENTORY */
+        .inventory {
+            position: fixed;
+            bottom: 60px; right: 10px;
+            z-index: 9998;
+            background: linear-gradient(135deg, #1a0a2a, #2a1a3a);
+            padding: 12px;
+            border: 3px solid var(--neon-purple);
+            box-shadow: 0 0 40px var(--neon-purple);
+            max-width: 200px;
+            transform: rotate(2deg);
+            animation: inventoryPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes inventoryPulse {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-purple); }
+            50% { box-shadow: 0 0 60px var(--neon-pink), 0 0 80px var(--neon-cyan); }
+        }
+
+        .inventory h4 {
+            font-family: 'Press Start 2P', monospace;
+            color: var(--neon-purple);
+            font-size: 0.6rem;
+            margin-bottom: 8px;
+            animation: textGlitch 0.3s infinite;
+        }
+
+        .inventory-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .inventory-item {
+            font-size: 1.2rem;
+            padding: 3px;
+            background: rgba(255,255,255,0.1);
+            animation: inventoryItemSpin 2s linear infinite;
+        }
+
+        @keyframes inventoryItemSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* CHAOS CONTAINER */
+        .chaos-container {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            min-height: 300vh;
+            position: relative;
+        }
+
+        /* FLOATING WINDOWS - More chaotic positioning */
+        .floating-window {
+            position: absolute;
+            background: linear-gradient(145deg, rgba(20,20,50,0.95), rgba(50,20,70,0.95));
+            border: 4px solid;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255,0,255,0.6);
+            animation: windowChaos 2s ease-in-out infinite;
+            transition: all 0.2s;
+        }
+
+        .floating-window:hover {
+            transform: scale(1.15) rotate(5deg) !important;
+            box-shadow: 0 0 80px var(--neon-cyan), 0 0 120px var(--neon-pink);
+            z-index: 1000;
+        }
+
+        @keyframes windowChaos {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(2deg); }
+            50% { transform: translateY(-10px) rotate(-2deg); }
+            75% { transform: translateY(-25px) rotate(1deg); }
         }
 
         .window-header {
-            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
-            padding: 8px 15px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+            background-size: 300% 100%;
+            animation: rainbowSlide 1s linear infinite;
+            padding: 6px 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .window-dots {
             display: flex;
-            gap: 5px;
+            gap: 4px;
         }
 
         .window-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            animation: dotPulse 1s infinite;
+            animation: dotSpin 0.5s infinite;
+        }
+
+        @keyframes dotSpin {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
         }
 
         .window-dot:nth-child(1) { background: #ff5f57; animation-delay: 0s; }
-        .window-dot:nth-child(2) { background: #ffbd2e; animation-delay: 0.2s; }
-        .window-dot:nth-child(3) { background: #28ca42; animation-delay: 0.4s; }
-
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-        }
+        .window-dot:nth-child(2) { background: #ffbd2e; animation-delay: 0.1s; }
+        .window-dot:nth-child(3) { background: #28ca42; animation-delay: 0.2s; }
 
         .window-title {
             font-family: 'Russo One', sans-serif;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-shadow: 2px 2px 0 #000;
+            animation: titleGlitch 0.2s infinite;
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(2px); }
         }
 
         .window-content {
@@ -229,458 +519,232 @@
             border: none;
         }
 
-        /* SPECIFIC WINDOW POSITIONS AND STYLES */
-        .window-1 {
-            top: 130px;
-            left: 2%;
-            width: 320px;
-            height: 240px;
-            border-color: var(--neon-pink);
-            animation-delay: 0s;
-        }
+        /* Window positions - scattered chaos */
+        .window-1 { top: 130px; left: 1%; width: 320px; height: 240px; border-color: var(--neon-pink); animation-delay: 0s; }
+        .window-2 { top: 140px; left: 33%; width: 340px; height: 260px; border-color: var(--neon-cyan); animation-delay: 0.2s; }
+        .window-3 { top: 150px; right: 1%; width: 310px; height: 230px; border-color: var(--neon-green); animation-delay: 0.4s; }
+        .window-4 { top: 400px; left: 3%; width: 290px; height: 220px; border-color: var(--neon-yellow); animation-delay: 0.6s; }
+        .window-5 { top: 420px; left: 28%; width: 350px; height: 270px; border-color: var(--neon-orange); animation-delay: 0.8s; }
+        .window-6 { top: 410px; right: 2%; width: 320px; height: 240px; border-color: var(--neon-purple); animation-delay: 1s; }
+        .window-7 { top: 680px; left: 5%; width: 300px; height: 230px; border-color: var(--ohio-red); animation-delay: 1.2s; }
+        .window-8 { top: 700px; left: 32%; width: 330px; height: 250px; border-color: var(--sigma-blue); animation-delay: 1.4s; }
+        .window-9 { top: 690px; right: 3%; width: 340px; height: 260px; border-color: var(--neon-pink); animation-delay: 1.6s; }
+        .window-10 { top: 970px; left: 8%; width: 310px; height: 240px; border-color: var(--neon-cyan); animation-delay: 1.8s; }
+        .window-11 { top: 990px; left: 35%; width: 360px; height: 280px; border-color: var(--neon-green); animation-delay: 2s; }
+        .window-12 { top: 980px; right: 5%; width: 330px; height: 250px; border-color: var(--neon-yellow); animation-delay: 2.2s; }
+        .window-13 { top: 1280px; left: 15%; width: 380px; height: 290px; border-color: var(--neon-orange); animation-delay: 2.4s; }
+        .window-14 { top: 1300px; right: 12%; width: 350px; height: 270px; border-color: var(--neon-purple); animation-delay: 2.6s; }
 
-        .window-2 {
-            top: 150px;
-            left: 35%;
-            width: 350px;
-            height: 260px;
-            border-color: var(--neon-cyan);
-            animation-delay: 0.5s;
-        }
-
-        .window-3 {
-            top: 140px;
-            right: 2%;
-            width: 300px;
-            height: 220px;
-            border-color: var(--neon-green);
-            animation-delay: 1s;
-        }
-
-        .window-4 {
-            top: 420px;
-            left: 5%;
-            width: 280px;
-            height: 200px;
-            border-color: var(--neon-yellow);
-            animation-delay: 1.5s;
-        }
-
-        .window-5 {
-            top: 450px;
-            left: 30%;
-            width: 340px;
-            height: 250px;
-            border-color: var(--neon-orange);
-            animation-delay: 2s;
-        }
-
-        .window-6 {
-            top: 400px;
-            right: 5%;
-            width: 310px;
-            height: 230px;
-            border-color: var(--neon-purple);
-            animation-delay: 2.5s;
-        }
-
-        .window-7 {
-            top: 700px;
-            left: 8%;
-            width: 290px;
-            height: 210px;
-            border-color: var(--ohio-red);
-            animation-delay: 3s;
-        }
-
-        .window-8 {
-            top: 720px;
-            left: 38%;
-            width: 320px;
-            height: 240px;
-            border-color: var(--neon-pink);
-            animation-delay: 3.5s;
-        }
-
-        .window-9 {
-            top: 680px;
-            right: 3%;
-            width: 330px;
-            height: 250px;
-            border-color: var(--neon-cyan);
-            animation-delay: 4s;
-        }
-
-        .window-10 {
-            top: 980px;
-            left: 15%;
-            width: 300px;
-            height: 220px;
-            border-color: var(--neon-green);
-            animation-delay: 4.5s;
-        }
-
-        .window-11 {
-            top: 1000px;
-            right: 15%;
-            width: 340px;
-            height: 260px;
-            border-color: var(--neon-yellow);
-            animation-delay: 5s;
-        }
-
-        .window-12 {
-            top: 1280px;
-            left: 25%;
-            width: 380px;
-            height: 280px;
-            border-color: var(--neon-orange);
-            animation-delay: 5.5s;
-        }
-
-        /* STEAL A BRAINROT SECTION */
-        .steal-section {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9998;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 20px;
-            border-radius: 20px;
-            border: 4px solid var(--neon-green);
-            box-shadow: 0 0 40px var(--neon-green);
-            max-width: 300px;
-        }
-
-        .steal-section h3 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.8rem;
-            color: var(--neon-green);
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px var(--neon-green);
-            animation: textFlicker 0.5s infinite;
-        }
-
-        @keyframes textFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .brainrot-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .brainrot-item {
-            font-size: 2rem;
-            padding: 10px;
-            background: linear-gradient(145deg, #2a2a4e, #1a1a3e);
-            border-radius: 10px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s;
-            animation: itemBounce 1s ease-in-out infinite;
-            text-align: center;
-        }
-
-        .brainrot-item:nth-child(1) { animation-delay: 0s; }
-        .brainrot-item:nth-child(2) { animation-delay: 0.1s; }
-        .brainrot-item:nth-child(3) { animation-delay: 0.2s; }
-        .brainrot-item:nth-child(4) { animation-delay: 0.3s; }
-        .brainrot-item:nth-child(5) { animation-delay: 0.4s; }
-        .brainrot-item:nth-child(6) { animation-delay: 0.5s; }
-        .brainrot-item:nth-child(7) { animation-delay: 0.6s; }
-        .brainrot-item:nth-child(8) { animation-delay: 0.7s; }
-
-        @keyframes itemBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .brainrot-item:hover {
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 20px var(--neon-pink);
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .brainrot-item.stolen {
-            filter: grayscale(100%);
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        /* FLOATING MEME TEXT */
+        /* FLOATING TEXT - MORE AND CRAZIER */
         .floating-text {
             position: fixed;
-            font-family: 'Bangers', cursive;
+            font-family: 'Permanent Marker', cursive;
             font-size: 3rem;
             pointer-events: none;
             z-index: 9996;
-            animation: floatAway 8s linear infinite;
-            text-shadow: 3px 3px 0 #000, 0 0 20px currentColor;
+            animation: textFloat 5s linear infinite;
+            text-shadow: 4px 4px 0 #000, 0 0 30px currentColor, 0 0 60px currentColor;
+            filter: drop-shadow(0 0 10px currentColor);
         }
 
-        @keyframes floatAway {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+        @keyframes textFloat {
+            0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(0) rotate(180deg) scale(1.5); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(0.5); opacity: 0; }
         }
 
-        .text-1 { left: 5%; color: var(--neon-pink); animation-delay: 0s; }
-        .text-2 { left: 20%; color: var(--neon-cyan); animation-delay: 1s; }
-        .text-3 { left: 40%; color: var(--neon-green); animation-delay: 2s; }
-        .text-4 { left: 60%; color: var(--neon-yellow); animation-delay: 3s; }
-        .text-5 { left: 80%; color: var(--neon-orange); animation-delay: 4s; }
-        .text-6 { left: 15%; color: var(--neon-purple); animation-delay: 5s; }
-        .text-7 { left: 50%; color: var(--ohio-red); animation-delay: 6s; }
-        .text-8 { left: 70%; color: var(--neon-pink); animation-delay: 7s; }
-
-        /* COLLECTION POPUP */
+        /* POPUP */
         .collect-popup {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, #ff0080, #7928ca, #00d4ff);
-            padding: 30px 50px;
-            border-radius: 30px;
-            border: 5px solid var(--neon-yellow);
-            box-shadow: 0 0 100px var(--neon-pink);
-            z-index: 99999;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            background: linear-gradient(135deg, #ff0080, #7928ca, #00d4ff, #39ff14);
+            background-size: 400% 400%;
+            animation: popupBg 0.5s linear infinite;
+            padding: 40px 60px;
+            border: 6px solid #fff;
+            box-shadow: 0 0 100px var(--neon-pink), 0 0 200px var(--neon-cyan);
+            z-index: 999999;
             text-align: center;
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popupBg {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .collect-popup.show {
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1) rotate(5deg);
         }
 
         .collect-popup h2 {
             font-family: 'Press Start 2P', monospace;
             font-size: 1.5rem;
             color: #fff;
-            text-shadow: 3px 3px 0 #000;
-            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 #000, 0 0 20px var(--neon-yellow);
+            animation: textGlitch 0.1s infinite;
         }
 
         .collect-popup .emoji {
-            font-size: 5rem;
-            animation: popupBounce 0.5s infinite;
+            font-size: 6rem;
+            animation: emojiCrazy 0.2s infinite;
         }
 
-        @keyframes popupBounce {
-            0%, 100% { transform: scale(1) rotate(-5deg); }
-            50% { transform: scale(1.2) rotate(5deg); }
+        @keyframes emojiCrazy {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.3) rotate(15deg); }
+            50% { transform: scale(0.8) rotate(-15deg); }
+            75% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
         }
 
-        /* INVENTORY DISPLAY */
-        .inventory {
+        /* FAKE NOTIFICATIONS */
+        .notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9998;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 15px;
-            border-radius: 15px;
-            border: 3px solid var(--neon-purple);
-            box-shadow: 0 0 30px var(--neon-purple);
-            max-width: 200px;
-        }
-
-        .inventory h4 {
+            right: -400px;
+            background: linear-gradient(135deg, #1a1a3a, #2a1a4a);
+            border-left: 5px solid var(--neon-green);
+            padding: 15px 20px;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 0 30px var(--neon-green);
+            z-index: 99999;
+            animation: slideNotif 4s ease-in-out forwards;
             font-family: 'Russo One', sans-serif;
-            color: var(--neon-purple);
+            color: #fff;
+            max-width: 300px;
+        }
+
+        @keyframes slideNotif {
+            0% { right: -400px; }
+            15% { right: 0; }
+            85% { right: 0; }
+            100% { right: -400px; }
+        }
+
+        .notification .notif-title {
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            color: var(--neon-green);
+            margin-bottom: 5px;
         }
 
-        .inventory-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
+        .notification .notif-text {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
 
-        .inventory-item {
-            font-size: 1.5rem;
-            padding: 5px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
-
-        /* BACKGROUND PARTICLES */
+        /* PARTICLES */
         .particle {
             position: fixed;
             pointer-events: none;
-            z-index: 1;
-            animation: particleFloat 10s linear infinite;
+            z-index: 2;
+            animation: particleChaos 6s linear infinite;
         }
 
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* AUDIO BUTTON */
-        .audio-btn {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            z-index: 9999;
-            background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
-            border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-family: 'Russo One', sans-serif;
-            font-size: 1rem;
-            color: #000;
-            cursor: pointer;
-            box-shadow: 0 0 30px var(--neon-green);
-            transition: all 0.3s;
-        }
-
-        .audio-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px var(--neon-cyan);
-        }
-
-        /* RESPONSIVE CHAOS */
-        @media (max-width: 768px) {
-            .floating-window {
-                position: relative !important;
-                width: 95% !important;
-                margin: 20px auto !important;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-            }
-
-            .steal-section, .inventory, .brainrot-counter {
-                position: relative;
-                width: 95%;
-                margin: 20px auto;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                bottom: auto !important;
-                max-width: none;
-            }
-
-            .header h1 {
-                font-size: 0.7rem;
-            }
-
-            .floating-text {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* GLITCH EFFECT */
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            animation: glitch-1 0.3s infinite;
-            color: var(--neon-cyan);
-            z-index: -1;
-        }
-
-        .glitch::after {
-            animation: glitch-2 0.3s infinite;
-            color: var(--neon-pink);
-            z-index: -2;
-        }
-
-        @keyframes glitch-1 {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(3px, -3px); }
-            60% { transform: translate(-3px, -3px); }
-            80% { transform: translate(3px, 3px); }
-        }
-
-        @keyframes glitch-2 {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(3px, -3px); }
-            40% { transform: translate(-3px, 3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(-3px, -3px); }
+        @keyframes particleChaos {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(80vh) rotate(72deg) scale(1); }
+            50% { transform: translateY(40vh) rotate(180deg) scale(1.5); }
+            90% { opacity: 1; transform: translateY(0) rotate(288deg) scale(1); }
+            100% { transform: translateY(-20vh) rotate(360deg) scale(0); opacity: 0; }
         }
 
         /* CURSOR TRAIL */
         .cursor-trail {
             position: fixed;
             pointer-events: none;
-            z-index: 99998;
-            font-size: 1.5rem;
-            animation: cursorFade 1s forwards;
+            z-index: 99997;
+            font-size: 2rem;
+            animation: trailFade 0.8s forwards;
         }
 
-        @keyframes cursorFade {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0) rotate(360deg); }
+        @keyframes trailFade {
+            0% { opacity: 1; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: scale(2) rotate(360deg); }
+        }
+
+        /* EMOJI RAIN */
+        .emoji-rain {
+            position: fixed;
+            top: -50px;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 3;
+            animation: rain 3s linear forwards;
+        }
+
+        @keyframes rain {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .floating-window {
+                position: relative !important;
+                width: 95% !important;
+                margin: 15px auto !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+            }
+            .stats-panel, .steal-section, .inventory {
+                position: relative;
+                width: 95%;
+                margin: 10px auto;
+                top: auto !important; left: auto !important;
+                right: auto !important; bottom: auto !important;
+                transform: none;
+            }
+            .floating-text { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- EPIC HEADER -->
+    <!-- ENTRY OVERLAY -->
+    <div class="entry-overlay" id="entryOverlay" onclick="enterBrainrot()">
+        <div class="entry-title">BRAINROT</div>
+        <div class="entry-warning">WARNING: MAXIMUM CHAOS AHEAD</div>
+        <button class="entry-button">UNLEASH THE CHAOS</button>
+    </div>
+
+    <!-- SCANLINES -->
+    <div class="scanlines"></div>
+
+    <!-- HEADER -->
     <header class="header">
-        <h1 class="glitch" data-text="ULTIMATE BRAINROT EXPERIENCE">ULTIMATE BRAINROT EXPERIENCE</h1>
+        <h1>ULTIMATE BRAINROT EXPERIENCE SKIBIDI OHIO RIZZ SIGMA GYATT FANUM TAX</h1>
     </header>
 
-    <!-- MARQUEE OF CHAOS -->
-    <div class="marquee-container">
-        <div class="marquee">
-            <span>SKIBIDI TOILET</span>
-            <span>GYATT</span>
-            <span>OHIO RIZZ</span>
-            <span>FANUM TAX</span>
-            <span>SIGMA GRINDSET</span>
-            <span>ONLY IN OHIO</span>
-            <span>MEWING</span>
-            <span>RIZZ GOD</span>
-            <span>SKIBIDI TOILET</span>
-            <span>GYATT</span>
-            <span>OHIO RIZZ</span>
-            <span>FANUM TAX</span>
-            <span>SIGMA GRINDSET</span>
-            <span>ONLY IN OHIO</span>
-            <span>MEWING</span>
-            <span>RIZZ GOD</span>
+    <!-- TOP MARQUEE -->
+    <div class="marquee-container marquee-top">
+        <div class="marquee marquee-left">
+            <span>SKIBIDI TOILET</span><span>GYATT</span><span>OHIO RIZZ</span><span>FANUM TAX</span><span>SIGMA GRINDSET</span><span>ONLY IN OHIO</span><span>MEWING</span><span>RIZZ GOD</span><span>SKIBIDI DOP DOP</span><span>YES YES</span><span>SKIBIDI TOILET</span><span>GYATT</span><span>OHIO RIZZ</span><span>FANUM TAX</span><span>SIGMA GRINDSET</span><span>ONLY IN OHIO</span>
         </div>
     </div>
 
-    <!-- AUDIO CONTROLS -->
-    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">ENABLE CHAOS AUDIO</button>
-
-    <!-- BRAINROT COUNTER -->
-    <div class="brainrot-counter">
-        <h2>BRAINROTS STOLEN</h2>
-        <div class="count" id="brainrotCount">0</div>
+    <!-- BOTTOM MARQUEE -->
+    <div class="marquee-container marquee-bottom">
+        <div class="marquee marquee-right">
+            <span>W RIZZ</span><span>L RATIO</span><span>NO CAP</span><span>BUSSIN</span><span>SUSSY BAKA</span><span>BASED</span><span>GOATED</span><span>BRUH MOMENT</span><span>SHEESH</span><span>DRIP</span><span>W RIZZ</span><span>L RATIO</span><span>NO CAP</span><span>BUSSIN</span><span>SUSSY BAKA</span><span>BASED</span>
+        </div>
     </div>
 
-    <!-- STEAL A BRAINROT SECTION -->
+    <!-- STATS PANEL -->
+    <div class="stats-panel">
+        <h2>CHAOS STATS</h2>
+        <div class="stat-row"><span>BRAINROTS:</span><span class="stat-value" id="brainrotCount">0</span></div>
+        <div class="stat-row"><span>SIGMA LVL:</span><span class="stat-value" id="sigmaLevel">1</span></div>
+        <div class="stat-row"><span>RIZZ POWER:</span><span class="stat-value" id="rizzPower">0</span></div>
+        <div class="stat-row"><span>CHAOS:</span><span class="stat-value" id="chaosLevel">MAX</span></div>
+    </div>
+
+    <!-- STEAL A BRAINROT -->
     <div class="steal-section">
         <h3>STEAL A BRAINROT!</h3>
-        <div class="brainrot-grid">
+        <div class="brainrot-grid" id="brainrotGrid">
             <div class="brainrot-item" onclick="stealBrainrot(this, '🚽')">🚽</div>
             <div class="brainrot-item" onclick="stealBrainrot(this, '🗿')">🗿</div>
             <div class="brainrot-item" onclick="stealBrainrot(this, '💀')">💀</div>
@@ -689,6 +753,10 @@
             <div class="brainrot-item" onclick="stealBrainrot(this, '🦴')">🦴</div>
             <div class="brainrot-item" onclick="stealBrainrot(this, '🌀')">🌀</div>
             <div class="brainrot-item" onclick="stealBrainrot(this, '⚡')">⚡</div>
+            <div class="brainrot-item" onclick="stealBrainrot(this, '🔥')">🔥</div>
+            <div class="brainrot-item" onclick="stealBrainrot(this, '💎')">💎</div>
+            <div class="brainrot-item" onclick="stealBrainrot(this, '👽')">👽</div>
+            <div class="brainrot-item" onclick="stealBrainrot(this, '🤖')">🤖</div>
         </div>
     </div>
 
@@ -698,383 +766,289 @@
         <div class="inventory-items" id="inventoryItems"></div>
     </div>
 
-    <!-- MAIN CHAOS CONTAINER -->
-    <div class="chaos-container">
-        <!-- WINDOW 1: Subway Surfers -->
-        <div class="floating-window window-1">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">SUBWAY SURFERS</span>
-            </div>
-            <div class="window-content" style="height: 200px;">
-                <iframe src="https://www.youtube.com/embed/s2TyVQGoCYo?autoplay=1&mute=1&loop=1&playlist=s2TyVQGoCYo&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
+    <!-- CHAOS CONTAINER -->
+    <div class="chaos-container" id="chaosContainer"></div>
 
-        <!-- WINDOW 2: Skibidi Toilet -->
-        <div class="floating-window window-2">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">SKIBIDI TOILET</span>
-            </div>
-            <div class="window-content" style="height: 220px;">
-                <iframe src="https://www.youtube.com/embed/xXGsEMyVzfk?autoplay=1&mute=1&loop=1&playlist=xXGsEMyVzfk&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
+    <!-- FLOATING TEXT - Will be generated dynamically -->
+    <div id="floatingTextContainer"></div>
 
-        <!-- WINDOW 3: More Subway -->
-        <div class="floating-window window-3">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">ENDLESS RUN</span>
-            </div>
-            <div class="window-content" style="height: 180px;">
-                <iframe src="https://www.youtube.com/embed/InDpNSdpVzk?autoplay=1&mute=1&loop=1&playlist=InDpNSdpVzk&controls=0&start=30" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 4: Family Guy Moments -->
-        <div class="floating-window window-4">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">FUNNY MOMENTS</span>
-            </div>
-            <div class="window-content" style="height: 160px;">
-                <iframe src="https://www.youtube.com/embed/2Z4m4lnjxkY?autoplay=1&mute=1&loop=1&playlist=2Z4m4lnjxkY&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 5: Minecraft Parkour -->
-        <div class="floating-window window-5">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">MINECRAFT PARKOUR</span>
-            </div>
-            <div class="window-content" style="height: 210px;">
-                <iframe src="https://www.youtube.com/embed/n_Dv4JMiwK8?autoplay=1&mute=1&loop=1&playlist=n_Dv4JMiwK8&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 6: Satisfying Content -->
-        <div class="floating-window window-6">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">SATISFYING</span>
-            </div>
-            <div class="window-content" style="height: 190px;">
-                <iframe src="https://www.youtube.com/embed/NSp2fEQ6wyA?autoplay=1&mute=1&loop=1&playlist=NSp2fEQ6wyA&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 7: Temple Run Style -->
-        <div class="floating-window window-7">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">KEEP RUNNING</span>
-            </div>
-            <div class="window-content" style="height: 170px;">
-                <iframe src="https://www.youtube.com/embed/FuX5_OWObA0?autoplay=1&mute=1&loop=1&playlist=FuX5_OWObA0&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 8: More Skibidi -->
-        <div class="floating-window window-8">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">SKIBIDI BOP</span>
-            </div>
-            <div class="window-content" style="height: 200px;">
-                <iframe src="https://www.youtube.com/embed/IkVG-qXRgfo?autoplay=1&mute=1&loop=1&playlist=IkVG-qXRgfo&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 9: ASMR/Slime -->
-        <div class="floating-window window-9">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">SLIME ASMR</span>
-            </div>
-            <div class="window-content" style="height: 210px;">
-                <iframe src="https://www.youtube.com/embed/RmHqeM9p1NU?autoplay=1&mute=1&loop=1&playlist=RmHqeM9p1NU&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 10: GTA Chaos -->
-        <div class="floating-window window-10">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">GTA CHAOS</span>
-            </div>
-            <div class="window-content" style="height: 180px;">
-                <iframe src="https://www.youtube.com/embed/QOJ1L8eEP2o?autoplay=1&mute=1&loop=1&playlist=QOJ1L8eEP2o&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 11: Roblox -->
-        <div class="floating-window window-11">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">ROBLOX MOMENTS</span>
-            </div>
-            <div class="window-content" style="height: 220px;">
-                <iframe src="https://www.youtube.com/embed/jAckVuEY_Rc?autoplay=1&mute=1&loop=1&playlist=jAckVuEY_Rc&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- WINDOW 12: More Brainrot -->
-        <div class="floating-window window-12">
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                    <div class="window-dot"></div>
-                </div>
-                <span class="window-title">PURE BRAINROT</span>
-            </div>
-            <div class="window-content" style="height: 240px;">
-                <iframe src="https://www.youtube.com/embed/Ct6BUPvE2sM?autoplay=1&mute=1&loop=1&playlist=Ct6BUPvE2sM&controls=0" allow="autoplay"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- FLOATING MEME TEXT -->
-    <div class="floating-text text-1">SKIBIDI</div>
-    <div class="floating-text text-2">GYATT</div>
-    <div class="floating-text text-3">OHIO</div>
-    <div class="floating-text text-4">RIZZ</div>
-    <div class="floating-text text-5">SIGMA</div>
-    <div class="floating-text text-6">FANUM TAX</div>
-    <div class="floating-text text-7">MEWING</div>
-    <div class="floating-text text-8">W RIZZ</div>
-
-    <!-- COLLECT POPUP -->
+    <!-- POPUP -->
     <div class="collect-popup" id="collectPopup">
         <h2>BRAINROT STOLEN!</h2>
         <div class="emoji" id="popupEmoji">🧠</div>
     </div>
 
-    <!-- AUDIO ELEMENTS -->
-    <audio id="vineBoom" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/vine-boom.mp3" type="audio/mpeg">
-    </audio>
+    <!-- AUDIO -->
+    <audio id="vineBoom" preload="auto"><source src="https://www.myinstants.com/media/sounds/vine-boom.mp3" type="audio/mpeg"></audio>
+    <audio id="bruhSound" preload="auto"><source src="https://www.myinstants.com/media/sounds/movie_1.mp3" type="audio/mpeg"></audio>
+    <audio id="oofSound" preload="auto"><source src="https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3" type="audio/mpeg"></audio>
+    <audio id="airhorn" preload="auto"><source src="https://www.myinstants.com/media/sounds/mlg-airhorn.mp3" type="audio/mpeg"></audio>
 
     <script>
-        // BRAINROT STATE
+        // VIDEOS - All verified working
+        const videos = [
+            { id: 'MHPGuO5BBEk', title: 'SUBWAY SURFERS' },
+            { id: 'tzD9OxAHtzU', title: 'SKIBIDI EP1' },
+            { id: 'IdZxnU31Wfo', title: 'SUBWAY RIO' },
+            { id: 'DXVPvMJO0lM', title: 'SKIBIDI EP77' },
+            { id: 'LWdx_DXCFxA', title: 'SLIME ASMR' },
+            { id: 'mDxwpM0zPug', title: 'SKIBIDI EP79' },
+            { id: 'AnoTVNqLJ-Q', title: 'SKIBIDI EP2' },
+            { id: 'HoS7mffQ2YQ', title: 'SKIBIDI EP78' },
+            { id: 'cPFhNfTRq64', title: 'ASMR 3HR' },
+            { id: 'PLUhJmqHd1s', title: 'SKIBIDI EP70' },
+            { id: 'UmKDiAEljhw', title: 'SKIBIDI EP39' },
+            { id: 'fgmucwMUYqY', title: 'SUBWAY CHAOS' },
+            { id: 'o_1YiaJSnjo', title: 'SKIBIDI EP72' },
+            { id: '4p6ufLRj3Vc', title: 'SLIME ASMR 2' }
+        ];
+
+        const colors = ['var(--neon-pink)', 'var(--neon-cyan)', 'var(--neon-green)', 'var(--neon-yellow)', 'var(--neon-orange)', 'var(--neon-purple)', 'var(--ohio-red)', 'var(--sigma-blue)'];
+        const trailEmojis = ['💀', '🗿', '🧠', '🚽', '⚡', '🌀', '👁️', '🦴', '🔥', '💎', '👽', '🤖', '😈', '🎭', '🃏'];
+        const phrases = ['SKIBIDI', 'GYATT', 'OHIO', 'RIZZ', 'SIGMA', 'FANUM TAX', 'MEWING', 'W RIZZ', 'L RATIO', 'NO CAP', 'BUSSIN', 'SUSSY', 'BASED', 'GOATED', 'BRUH', 'SHEESH', 'DOP DOP', 'YES YES'];
+        const notifications = [
+            { title: 'SIGMA ALERT', text: 'Your rizz level increased!' },
+            { title: 'BRAINROT DETECTED', text: 'Ohio levels critical!' },
+            { title: 'SKIBIDI WARNING', text: 'Toilet approaching!' },
+            { title: 'GYATT MOMENT', text: 'Maximum gyatt achieved!' },
+            { title: 'FANUM TAX', text: 'Tax has been collected!' },
+            { title: 'MEWING CHECK', text: 'Jawline improving!' },
+        ];
+
+        // STATE
         let brainrotCount = 0;
+        let sigmaLevel = 1;
+        let rizzPower = 0;
         let audioEnabled = false;
         let inventory = [];
-        const trailEmojis = ['💀', '🗿', '🧠', '🚽', '⚡', '🌀', '👁️', '🦴'];
+        let chaosStarted = false;
 
-        // STEAL BRAINROT FUNCTION
-        function stealBrainrot(element, emoji) {
-            if (element.classList.contains('stolen')) return;
+        // ENTER THE CHAOS
+        function enterBrainrot() {
+            document.getElementById('entryOverlay').classList.add('hidden');
+            document.body.classList.add('chaos-mode');
+            audioEnabled = true;
+            chaosStarted = true;
 
-            element.classList.add('stolen');
+            // Play entry sounds
+            playSound('airhorn');
+            setTimeout(() => playSound('vineBoom'), 300);
+            setTimeout(() => playSound('bruhSound'), 600);
+
+            // Create video windows
+            const container = document.getElementById('chaosContainer');
+            videos.forEach((video, i) => {
+                const color = colors[i % colors.length];
+                container.innerHTML += `
+                    <div class="floating-window window-${i+1}" style="border-color: ${color}; animation-delay: ${i * 0.2}s;">
+                        <div class="window-header">
+                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                            <span class="window-title">${video.title}</span>
+                        </div>
+                        <div class="window-content" style="height: ${180 + (i % 4) * 25}px;">
+                            <iframe src="https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&loop=1&playlist=${video.id}&controls=0&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Start all chaos systems
+            startFloatingText();
+            startParticles();
+            startEmojiRain();
+            startNotifications();
+            startAutoStats();
+            startBrainrotRespawn();
+            startRandomSounds();
+        }
+
+        // SOUNDS
+        function playSound(id) {
+            if (!audioEnabled) return;
+            const audio = document.getElementById(id);
+            if (audio) {
+                audio.currentTime = 0;
+                audio.volume = 0.4;
+                audio.play().catch(() => {});
+            }
+        }
+
+        // STEAL BRAINROT
+        function stealBrainrot(el, emoji) {
+            if (el.classList.contains('stolen')) return;
+            el.classList.add('stolen');
             brainrotCount++;
+            rizzPower += Math.floor(Math.random() * 50) + 10;
+            if (brainrotCount % 5 === 0) sigmaLevel++;
             inventory.push(emoji);
 
-            // Update counter
-            document.getElementById('brainrotCount').textContent = brainrotCount;
+            updateStats();
 
-            // Update inventory
-            const inventoryDiv = document.getElementById('inventoryItems');
+            const inv = document.getElementById('inventoryItems');
             const item = document.createElement('span');
             item.className = 'inventory-item';
             item.textContent = emoji;
-            inventoryDiv.appendChild(item);
+            inv.appendChild(item);
 
-            // Show popup
             const popup = document.getElementById('collectPopup');
             document.getElementById('popupEmoji').textContent = emoji;
             popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 1000);
 
-            // Play sound
-            if (audioEnabled) {
-                playVineBoom();
-            }
-
-            // Hide popup
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 1500);
-
-            // Spawn explosion particles
-            spawnExplosion(element);
+            playSound('vineBoom');
+            if (Math.random() > 0.5) playSound('oofSound');
+            spawnExplosion(el);
         }
 
-        // VINE BOOM
-        function playVineBoom() {
-            const audio = document.getElementById('vineBoom');
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
+        function updateStats() {
+            document.getElementById('brainrotCount').textContent = brainrotCount;
+            document.getElementById('sigmaLevel').textContent = sigmaLevel;
+            document.getElementById('rizzPower').textContent = rizzPower;
         }
 
-        // TOGGLE AUDIO
-        function toggleAudio() {
-            audioEnabled = !audioEnabled;
-            const btn = document.getElementById('audioBtn');
-            btn.textContent = audioEnabled ? 'DISABLE CHAOS AUDIO' : 'ENABLE CHAOS AUDIO';
-            btn.style.background = audioEnabled ?
-                'linear-gradient(135deg, var(--neon-pink), var(--ohio-red))' :
-                'linear-gradient(135deg, var(--neon-green), var(--neon-cyan))';
-
-            if (audioEnabled) {
-                playVineBoom();
+        // EXPLOSION
+        function spawnExplosion(el) {
+            const rect = el.getBoundingClientRect();
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+                p.style.left = (rect.left + rect.width/2) + 'px';
+                p.style.top = (rect.top + rect.height/2) + 'px';
+                p.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                p.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 3000);
             }
         }
 
-        // SPAWN EXPLOSION PARTICLES
-        function spawnExplosion(element) {
-            const rect = element.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
+        // FLOATING TEXT
+        function startFloatingText() {
+            const container = document.getElementById('floatingTextContainer');
+            setInterval(() => {
+                const text = document.createElement('div');
+                text.className = 'floating-text';
+                text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+                text.style.left = Math.random() * 80 + '%';
+                text.style.color = colors[Math.floor(Math.random() * colors.length)];
+                text.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                text.style.fontSize = (Math.random() * 2 + 2) + 'rem';
+                container.appendChild(text);
+                setTimeout(() => text.remove(), 7000);
+            }, 800);
+        }
 
-            for (let i = 0; i < 10; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
-                particle.style.left = centerX + 'px';
-                particle.style.top = centerY + 'px';
-                particle.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                particle.style.animationDuration = (Math.random() * 2 + 1) + 's';
-                document.body.appendChild(particle);
+        // PARTICLES
+        function startParticles() {
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+                p.style.left = Math.random() * 100 + '%';
+                p.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 8000);
+            }, 300);
+        }
 
-                setTimeout(() => particle.remove(), 3000);
-            }
+        // EMOJI RAIN
+        function startEmojiRain() {
+            setInterval(() => {
+                for (let i = 0; i < 3; i++) {
+                    const e = document.createElement('div');
+                    e.className = 'emoji-rain';
+                    e.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+                    e.style.left = Math.random() * 100 + '%';
+                    e.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(e);
+                    setTimeout(() => e.remove(), 4000);
+                }
+            }, 500);
+        }
+
+        // NOTIFICATIONS
+        function startNotifications() {
+            let notifTop = 150;
+            setInterval(() => {
+                const n = notifications[Math.floor(Math.random() * notifications.length)];
+                const notif = document.createElement('div');
+                notif.className = 'notification';
+                notif.style.top = notifTop + 'px';
+                notif.innerHTML = `<div class="notif-title">${n.title}</div><div class="notif-text">${n.text}</div>`;
+                document.body.appendChild(notif);
+                notifTop = ((notifTop - 100) % 400) + 150;
+                playSound('oofSound');
+                setTimeout(() => notif.remove(), 4500);
+            }, 5000);
+        }
+
+        // AUTO STATS
+        function startAutoStats() {
+            setInterval(() => {
+                rizzPower += Math.floor(Math.random() * 10);
+                if (Math.random() > 0.9) sigmaLevel++;
+                updateStats();
+            }, 2000);
+        }
+
+        // RESPAWN BRAINROTS
+        function startBrainrotRespawn() {
+            setInterval(() => {
+                const stolen = document.querySelectorAll('.brainrot-item.stolen');
+                if (stolen.length > 0) {
+                    stolen[Math.floor(Math.random() * stolen.length)].classList.remove('stolen');
+                }
+            }, 3000);
+        }
+
+        // RANDOM SOUNDS
+        function startRandomSounds() {
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const sounds = ['vineBoom', 'bruhSound', 'oofSound'];
+                    playSound(sounds[Math.floor(Math.random() * sounds.length)]);
+                }
+            }, 4000);
         }
 
         // CURSOR TRAIL
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.9) {
-                const trail = document.createElement('div');
-                trail.className = 'cursor-trail';
-                trail.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
-                trail.style.left = e.clientX + 'px';
-                trail.style.top = e.clientY + 'px';
-                document.body.appendChild(trail);
-
-                setTimeout(() => trail.remove(), 1000);
+            if (!chaosStarted) return;
+            if (Math.random() > 0.85) {
+                const t = document.createElement('div');
+                t.className = 'cursor-trail';
+                t.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+                t.style.left = e.clientX + 'px';
+                t.style.top = e.clientY + 'px';
+                document.body.appendChild(t);
+                setTimeout(() => t.remove(), 800);
             }
         });
 
-        // RANDOM CLICK SOUNDS
+        // CLICK SOUNDS
         document.addEventListener('click', () => {
-            if (audioEnabled && Math.random() > 0.5) {
-                playVineBoom();
+            if (chaosStarted && Math.random() > 0.4) {
+                playSound(Math.random() > 0.5 ? 'vineBoom' : 'bruhSound');
             }
         });
 
-        // SPAWN BACKGROUND PARTICLES
-        function spawnBackgroundParticles() {
-            setInterval(() => {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-                particle.style.fontSize = (Math.random() * 30 + 15) + 'px';
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(particle);
-
-                setTimeout(() => particle.remove(), 12000);
-            }, 500);
-        }
-
-        // RESPAWN BRAINROTS
-        function respawnBrainrots() {
-            setInterval(() => {
-                const items = document.querySelectorAll('.brainrot-item.stolen');
-                if (items.length > 0) {
-                    const randomItem = items[Math.floor(Math.random() * items.length)];
-                    randomItem.classList.remove('stolen');
-                }
-            }, 5000);
-        }
-
-        // DYNAMIC FLOATING TEXT
-        function randomizeFloatingText() {
-            const texts = document.querySelectorAll('.floating-text');
-            const phrases = ['SKIBIDI', 'GYATT', 'OHIO', 'RIZZ', 'SIGMA', 'FANUM TAX', 'MEWING', 'W RIZZ', 'L RATIO', 'NO CAP', 'BUSSIN', 'SUSSY', 'BASED', 'GOATED'];
-
-            setInterval(() => {
-                texts.forEach(text => {
-                    text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
-                });
-            }, 8000);
-        }
-
-        // INIT
-        spawnBackgroundParticles();
-        respawnBrainrots();
-        randomizeFloatingText();
-
-        // KONAMI CODE EASTER EGG
-        let konamiCode = [];
-        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
+        // KONAMI CODE
+        let kc = [];
+        const ks = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
         document.addEventListener('keydown', (e) => {
-            konamiCode.push(e.key);
-            konamiCode = konamiCode.slice(-10);
-
-            if (konamiCode.join(',') === konamiSequence.join(',')) {
-                // ULTRA BRAINROT MODE
-                document.body.style.animation = 'screenShake 0.1s infinite, gradientShift 0.5s ease infinite';
-                alert('ULTRA BRAINROT MODE ACTIVATED! YOU ARE NOW A SIGMA!');
-
-                // Add 100 brainrots
-                for (let i = 0; i < 100; i++) {
-                    brainrotCount++;
-                    inventory.push(trailEmojis[Math.floor(Math.random() * trailEmojis.length)]);
-                }
-                document.getElementById('brainrotCount').textContent = brainrotCount;
+            kc.push(e.key);
+            kc = kc.slice(-10);
+            if (kc.join(',') === ks.join(',')) {
+                alert('ULTRA SIGMA MODE! +1000 BRAINROTS!');
+                brainrotCount += 1000;
+                sigmaLevel += 100;
+                rizzPower += 99999;
+                updateStats();
+                for (let i = 0; i < 10; i++) setTimeout(() => playSound('airhorn'), i * 100);
             }
         });
 
-        console.log('%c WELCOME TO BRAINROT ', 'background: linear-gradient(90deg, #ff00ff, #00ffff); color: black; font-size: 30px; font-weight: bold; padding: 20px;');
-        console.log('%c You are now certified SIGMA ', 'color: #39ff14; font-size: 16px;');
+        console.log('%c MAXIMUM BRAINROT ', 'background: linear-gradient(90deg, #ff00ff, #00ffff, #39ff14); color: black; font-size: 40px; font-weight: bold; padding: 30px;');
     </script>
 </body>
 </html>
